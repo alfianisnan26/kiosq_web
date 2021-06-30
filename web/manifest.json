@@ -1,22 +1,22 @@
 {
-    "name": "kiosq_web",
-    "short_name": "kiosq_web",
+    "name": "KiosQ App Showcase",
+    "short_name": "KiosQ",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "KiosQ App Showcase",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
         {
-            "src": "icons/Icon-192.png",
-            "sizes": "192x192",
+            "src": "icons/KiosqLogo.png",
+            "sizes": "73x163",
             "type": "image/png"
         },
         {
-            "src": "icons/Icon-512.png",
-            "sizes": "512x512",
+            "src": "icons/KiosqLogo@2x.png",
+            "sizes": "146x346",
             "type": "image/png"
         }
     ]

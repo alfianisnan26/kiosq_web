@@ -15,9 +15,10 @@ class WebApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'KiosQ Web Portofolio',
+      title: 'KiosQ App Showcase',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        fontFamily: 'ProductSans'
       ),
       home: MainPage(),
     );

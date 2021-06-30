@@ -16,7 +16,7 @@ class _Features extends State<Features> {
   @override
   Widget build(BuildContext context) {
     return Material(
-        color: Colors.blue,
+        color: Colors.lime,
         child: Container(
           alignment: Alignment.bottomLeft,
       padding: EdgeInsets.all(50),

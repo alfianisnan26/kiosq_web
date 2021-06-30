@@ -28,7 +28,7 @@ class _AtGlance extends State<AtGlance> {
   @override
   Widget build(BuildContext context) {
     return Material(
-        color: Colors.yellow,
+        color: Colors.red,
         child: Container(
           alignment: Alignment.bottomCenter,
       padding: EdgeInsets.all(50),

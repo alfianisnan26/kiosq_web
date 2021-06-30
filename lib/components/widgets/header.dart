@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kiosq_web/static.dart';
 
@@ -43,39 +44,6 @@ class DynamicHeader extends StatefulWidget {
   }
 }
 
-class aDynamicHeader extends State<DynamicHeader> {
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-        animationDuration: Duration(milliseconds: 125),
-        elevation: (Static.headerState) ? 10 : 0,
-        child: AnimatedContainer(
-          height: 50,
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          color: Colors.white,
-          duration: Duration(milliseconds: 125),
-          child: Stack(
-            children: [
-              Center(
-                  child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("KiosQ"),
-                  (MediaQuery.of(context).size.width <
-                          Menus.widgets.length * 110 + 500)
-                      ? IconButton(
-                          icon: Icon(Icons.dehaze_rounded),
-                          onPressed: widget.callback)
-                      : Row(children: Menus.navigator(100)),
-                ],
-              )),
-              Center(child: Text("Logo"))
-            ],
-          ),
-        ));
-  }
-}
-
 class _DynamicHeader extends State<DynamicHeader>
     with SingleTickerProviderStateMixin {
   Curve curve = Curves.easeInOut;
@@ -104,7 +72,8 @@ class _DynamicHeader extends State<DynamicHeader>
                     child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("KiosQ"),
+                    Text("KiosQ",
+                    style: TextStyle(fontWeight: FontWeight.bold),),
                     (MediaQuery.of(context).size.width <
                             Menus.widgets.length * 110 + 500)
                         ? IconButton(
@@ -113,7 +82,11 @@ class _DynamicHeader extends State<DynamicHeader>
                         : Row(children: Menus.navigator(100)),
                   ],
                 )),
-                Center(child: Text("Logo"))
+                Center(
+                    child: Padding(
+                        padding: EdgeInsets.all(10),
+                        child:Image.asset('assets/png/smallicon.png',
+                    fit: BoxFit.contain,)))
               ],
             ),
           )),

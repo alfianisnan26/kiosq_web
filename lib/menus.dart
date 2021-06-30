@@ -7,19 +7,22 @@ import 'components/widgets/about.dart';
 import 'components/widgets/contactus.dart';
 import 'components/widgets/features.dart';
 import 'components/widgets/header.dart';
+import 'components/widgets/showcase.dart';
 
 class Menus {
   static final Map<String, Widget> _widgets = {
     'Main': Header(),
     'At Glance': AtGlance(),
+    'Showcase': Showcase(),
     'Features' : Features(),
     'About': About(),
     'Contact Us': ContactUs(),
-  };
 
+  };
   static final Map<String, GlobalKey> keys = {
     'Main': GlobalKey(),
     'At Glance': GlobalKey(),
+    'Showcase' : GlobalKey(),
     'Features' : GlobalKey(),
     'About': GlobalKey(),
     'Contact Us': GlobalKey(),
