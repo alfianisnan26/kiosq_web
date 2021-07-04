@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../menus.dart';
-import '../../static.dart';
 import '../strings.dart';
 
 class Features extends StatefulWidget {
@@ -23,7 +22,8 @@ class Features extends StatefulWidget {
 class _Features extends State<Features> {
   Map<String, List<String>> features = {
     'Smart Search': ['search.svg', 'The Search Engine is Great'],
-    'Smart Map': ['map.svg', 'The Map is Great']
+    'Smart Map': ['map.svg', 'The Map is Great'],
+    'Smart Cashier': ['cashier.svg', 'The Cashier is Great']
   };
 
   List<String> defaultDesc = ['Features', Strings.samples];

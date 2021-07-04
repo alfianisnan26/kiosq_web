@@ -47,7 +47,7 @@ class _AtGlance extends State<AtGlance> {
               )),
           SizedBox(height: 20,),
           Text(
-            Strings.samples
+            Strings.deskripsiAtGlance
           ),
         ],
       ),

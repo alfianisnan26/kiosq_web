@@ -24,7 +24,7 @@ class TheTeam extends StatefulWidget {
 class _TheTeam extends State<TheTeam> {
   Map<String, List<String>> features = {
     'Alfian Badrul Isnan': ['alfian.jpg', 'alf.ian_'],
-    'Nama 2': ['alfian.jpg', 'instagram'],
+    'Ricky Kus': ['alfian.jpg', 'rc_kusnadi'],
   };
 
   CarouselController buttonCarouselController = CarouselController();
