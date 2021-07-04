@@ -54,6 +54,7 @@ class _Showcase extends State<Showcase> {
             padding: EdgeInsets.symmetric(horizontal: 50),
             child:Text(widget.name,
               style: TextStyle(
+                fontWeight: FontWeight.bold,
                 fontSize: 30,
               ))),
           SizedBox(height: 20,),

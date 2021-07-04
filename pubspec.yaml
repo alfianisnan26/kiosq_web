@@ -1,5 +1,5 @@
 name: kiosq_web
-description: A new Flutter project.
+description: KiosQ Web Showcase.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -31,6 +31,8 @@ dependencies:
   youtube_player_iframe: ^2.1.0
   carousel_slider: ^4.0.0
   flutter_svg: ^0.22.0
+  flutter_rating_bar: ^4.0.0
+  http: ^0.13.3
 
 dev_dependencies:
   flutter_test:

@@ -22,7 +22,7 @@ class _Header extends State<Header> {
           padding: EdgeInsets.only(top: 50),
         child:Container(
           padding: EdgeInsets.all(50),
-          alignment: Alignment.bottomLeft,
+          alignment: Alignment.bottomCenter,
           height: 500,
           decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/png/header.png'), fit: BoxFit.fitHeight)),
           child: Column(
@@ -31,10 +31,15 @@ class _Header extends State<Header> {
             children: [
               Text('Meet the KiosQ app',
                   style: TextStyle(
+                    fontWeight: FontWeight.bold,
                     fontSize: 30,
                   )),
               SizedBox(height: 20,),
-              Text(Strings.samples)
+              Text(Strings.header,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 20
+                ),)
             ],
           ),
         )));

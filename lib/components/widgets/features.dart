@@ -115,6 +115,7 @@ class _Features extends State<Features> {
                   child: Text(desc[0],
                       style: TextStyle(
                         fontSize: 30,
+                        fontWeight: FontWeight.bold,
                       ))),
               SizedBox(
                 height: 20,

@@ -44,10 +44,13 @@ class _AtGlance extends State<AtGlance> {
           Text(widget.name,
               style: TextStyle(
                 fontSize: 30,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
               )),
           SizedBox(height: 20,),
           Text(
-            Strings.deskripsiAtGlance
+            Strings.deskripsiAtGlance,
+            style: TextStyle(color: Colors.white.withOpacity(0.8)),
           ),
         ],
       ),

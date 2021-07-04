@@ -100,7 +100,7 @@ class _TheTeam extends State<TheTeam> {
                                               decoration: BoxDecoration(
                                                   shape: BoxShape.circle,
                                                   color: Colors.white
-                                                      .withOpacity(0.5)),
+                                                      .withOpacity(0.8)),
                                               child: ClipRRect(
                                                   borderRadius:
                                                       BorderRadius.circular(
@@ -125,7 +125,7 @@ class _TheTeam extends State<TheTeam> {
                                                             Text(features[features
                                                                     .keys
                                                                     .toList()[
-                                                                index]][1]),
+                                                                index]][1], style: TextStyle(color: Colors.black.withOpacity(0.5)),),
                                                           ])))))),
                                 ),
                               )));
@@ -150,14 +150,16 @@ class _TheTeam extends State<TheTeam> {
                   padding: EdgeInsets.symmetric(horizontal: 50),
                   child: Text('Meet Our Team',
                       style: TextStyle(
+                          fontWeight: FontWeight.bold,
                         fontSize: 30,
+                        color: Colors.white
                       ))),
               SizedBox(
                 height: 20,
               ),
               Padding(
                   padding: EdgeInsets.symmetric(horizontal: 50),
-                  child: Text(Strings.samples)),
+                  child: Text(Strings.samples, style: TextStyle(color:Colors.white.withOpacity(0.8)),)),
             ],
           ),
         ));
