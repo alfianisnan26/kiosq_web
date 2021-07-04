@@ -21,12 +21,15 @@ class Features extends StatefulWidget {
 
 class _Features extends State<Features> {
   Map<String, List<String>> features = {
-    'Smart Search': ['search.svg', 'The Search Engine is Great'],
-    'Smart Map': ['map.svg', 'The Map is Great'],
-    'Smart Cashier': ['cashier.svg', 'The Cashier is Great']
+    'Smart Search': ['search.svg', 'Mencari barang dan toko yang menyediakan barang tersebut'],
+    'Smart Map': ['map.svg', 'Mencari lokasi toko terdekat'],
+    'Smart Cashier':['cashier.svg', 'Menghitung transaksi dengan tepat'],
+    'Smart Counting':['maths.svg','Melakukan pembukuan otomatis untuk penjual'],
+    'Smart Delivery':['delivery-truck.svg','Dapat dilakukan pengiriman oleh pihak toko'],
+    'Smart Payment':['debit-card.svg','Dapat melakukan pembayaran melalui e-wallet/e-payment']
   };
 
-  List<String> defaultDesc = ['Features', Strings.samples];
+  List<String> defaultDesc = ['Features', Strings.fitur];
 
   List<String> desc;
   CarouselController buttonCarouselController = CarouselController();
@@ -42,7 +45,7 @@ class _Features extends State<Features> {
   Widget build(BuildContext context) {
     double size = MediaQuery.of(context).size.width;
     return Material(
-        color: Colors.lime,
+        color: Colors.white,
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 50),
           alignment: Alignment.bottomLeft,
@@ -55,7 +58,7 @@ class _Features extends State<Features> {
                       return Padding(
                         padding: EdgeInsets.symmetric(vertical: 25),
                         child: Card(
-                          elevation: 20,
+                          elevation: 5,
                           color: Colors.white,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(25),
@@ -122,7 +125,7 @@ class _Features extends State<Features> {
               ),
               Padding(
                   padding: EdgeInsets.symmetric(horizontal: 50),
-                  child: Text(desc[1])),
+                  child: Text(desc[1], textAlign: TextAlign.center,style: TextStyle(fontSize: 20),)),
             ],
           ),
         ));

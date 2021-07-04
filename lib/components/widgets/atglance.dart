@@ -28,7 +28,7 @@ class _AtGlance extends State<AtGlance> {
   @override
   Widget build(BuildContext context) {
     return Material(
-        color: Colors.red,
+        color: Colors.white,
         child: Container(
           alignment: Alignment.bottomCenter,
       padding: EdgeInsets.all(50),
@@ -44,13 +44,14 @@ class _AtGlance extends State<AtGlance> {
           Text(widget.name,
               style: TextStyle(
                 fontSize: 30,
-                color: Colors.white,
+                color: Colors.black,
                 fontWeight: FontWeight.bold,
               )),
           SizedBox(height: 20,),
           Text(
-            Strings.deskripsiAtGlance,
-            style: TextStyle(color: Colors.white.withOpacity(0.8)),
+            Strings.videoDescription,
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.black.withOpacity(0.8),fontSize: 20),
           ),
         ],
       ),

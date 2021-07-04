@@ -12,7 +12,7 @@ import '../../menus.dart';
 import '../strings.dart';
 
 class Feedbacks extends StatefulWidget {
-  final String name = 'Feedbacks';
+  final String name = 'Feedback';
   Key get key => Menus.keys[name];
   @override
   State<StatefulWidget> createState() {
@@ -90,11 +90,14 @@ class _Feedbacks extends State<Feedbacks> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(value[index].date.toString(), style:
-                              TextStyle(color: Colors.grey),),
+                            Text(
+                              dateFormatter(value[index].date),
+                              style: TextStyle(color: Colors.grey),
+                            ),
                             Text(
                               value[index].msg,
                               maxLines: 5,
+                              textAlign: TextAlign.center,
                               overflow: TextOverflow.ellipsis,
                             ),
                             RatingBarIndicator(
@@ -143,10 +146,11 @@ class _Feedbacks extends State<Feedbacks> {
               ),
               Padding(
                   padding: EdgeInsets.symmetric(horizontal: 50),
-                  child: Text(Strings.feedback,
-                  style: TextStyle(
-                    color: Colors.white.withOpacity(0.8)
-                  ),)),
+                  child: Text(
+                    Strings.feedback,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 20),
+                  )),
               Padding(
                   padding: EdgeInsets.only(left: 50, right: 50, top: 25),
                   child: Material(
@@ -163,7 +167,7 @@ class _Feedbacks extends State<Feedbacks> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Berikan kami masukkan dan saran agar kita dapat berkembang bersama',
+                                  'Give us your input and suggestions so we can grow together',
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                                 Padding(
@@ -178,17 +182,18 @@ class _Feedbacks extends State<Feedbacks> {
                                         });
                                       },
                                       decoration: new InputDecoration(
-                                        border: new OutlineInputBorder(
-                                          borderRadius: const BorderRadius.all(
-                                            const Radius.circular(25),
+                                          border: new OutlineInputBorder(
+                                            borderRadius:
+                                                const BorderRadius.all(
+                                              const Radius.circular(25),
+                                            ),
                                           ),
-                                        ),
-                                        hintText: "Tulis saran anda disini",
-                                        hintStyle: TextStyle(color: Colors.grey)
-                                      ),
+                                          hintText: "Type your inputs and suggestions here",
+                                          hintStyle:
+                                              TextStyle(color: Colors.grey)),
                                     )),
                                 Text(
-                                  'Berikan kami penilaian!',
+                                  'Give us rating!',
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                                 Row(
@@ -262,8 +267,10 @@ class _Feedbacks extends State<Feedbacks> {
                 items: feedbackList,
                 carouselController: buttonCarouselController,
                 options: CarouselOptions(
-                  viewportFraction: 475/size,
-                    height: 250, autoPlay: true, initialPage: 0),
+                    viewportFraction: 475 / size,
+                    height: 250,
+                    autoPlay: true,
+                    initialPage: 0),
               ),
               SizedBox(
                 height: 25,
@@ -271,5 +278,74 @@ class _Feedbacks extends State<Feedbacks> {
             ],
           )),
     );
+  }
+
+  String dateFormatter(DateTime date) {
+    String day;
+    String month;
+    switch (date.weekday) {
+      case DateTime.sunday:
+        day = 'Sunday';
+        break;
+      case DateTime.monday:
+        day = 'Monday';
+        break;
+      case DateTime.tuesday:
+        day = 'Tuesday';
+        break;
+      case DateTime.wednesday:
+        day = 'Wednesday';
+        break;
+      case DateTime.thursday:
+        day = 'Thursday';
+        break;
+      case DateTime.friday:
+        day = 'Friday';
+        break;
+      case DateTime.saturday:
+        day = 'Saturday';
+        break;
+    }
+
+    switch (date.month) {
+      case DateTime.january:
+        month = 'January';
+        break;
+      case DateTime.february:
+        month = 'February';
+        break;
+      case DateTime.march:
+        month = 'March';
+        break;
+      case DateTime.april:
+        month = 'April';
+        break;
+      case DateTime.may:
+        month = 'May';
+        break;
+      case DateTime.june:
+        month = 'June';
+        break;
+      case DateTime.july:
+        month = 'July';
+        break;
+      case DateTime.august:
+        month = 'August';
+        break;
+      case DateTime.september:
+        month = 'September';
+        break;
+      case DateTime.october:
+        month = 'October';
+        break;
+      case DateTime.november:
+        month = 'November';
+        break;
+      case DateTime.december:
+        month = 'December';
+        break;
+    }
+
+    return '$day, ${date.day} $month ${date.year}. at ${(date.hour%12 < 10)?'0':''}${date.hour%12}:${date.minute} ${(date.hour/12 < 1)?'AM':'PM'}';
   }
 }

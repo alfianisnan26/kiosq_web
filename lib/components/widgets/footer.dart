@@ -15,7 +15,7 @@ class _Footer extends State<Footer> {
   @override
   Widget build(BuildContext context) {
     return Material(
-        color: Colors.purple,
+        color: Colors.blue.shade900,
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 50, vertical: 10),
           alignment: Alignment.bottomLeft,
@@ -30,8 +30,10 @@ class _Footer extends State<Footer> {
                           : true,
                       child: Text(
                           'KiosQ App Showcase 1.02 [Beta] | KiosQ App 0.2 [Alpha]',
-                          overflow: TextOverflow.fade)),
-                  Text('KiosQ Team © 2021')
+                          overflow: TextOverflow.fade,
+                      style: TextStyle(color: Colors.white.withOpacity(0.8)))),
+                  Text('KiosQ Team © 2021',
+                  style: TextStyle(color: Colors.white.withOpacity(0.8)),)
                 ],
               )
             ],
