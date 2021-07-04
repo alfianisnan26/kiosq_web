@@ -19,25 +19,30 @@ class _Header extends State<Header> {
     return Material(
         color: Colors.white,
         child: Padding(
-          padding: EdgeInsets.only(top: 50),
-        child:Container(
-          padding: EdgeInsets.all(50),
-          alignment: Alignment.bottomLeft,
-          height: 500,
-          decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/png/header.png'), fit: BoxFit.fitHeight)),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text('Meet the KiosQ app',
-                  style: TextStyle(
-                    fontSize: 30,
-                  )),
-              SizedBox(height: 20,),
-              Text(Strings.samples)
-            ],
-          ),
-        )));
+            padding: EdgeInsets.only(top: 50),
+            child: Container(
+              padding: EdgeInsets.all(50),
+              alignment: Alignment.bottomLeft,
+              height: 500,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/png/header.png'),
+                      fit: BoxFit.fitHeight)),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text('Meet the KiosQ app',
+                      style: TextStyle(
+                        fontSize: 30,
+                      )),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(Strings.kiosQ)
+                ],
+              ),
+            )));
   }
 }
 
@@ -78,8 +83,10 @@ class _DynamicHeader extends State<DynamicHeader>
                     child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("KiosQ",
-                    style: TextStyle(fontWeight: FontWeight.bold),),
+                    Text(
+                      "KiosQ",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                     (MediaQuery.of(context).size.width <
                             Menus.widgets.length * 110 + 500)
                         ? IconButton(
@@ -91,8 +98,10 @@ class _DynamicHeader extends State<DynamicHeader>
                 Center(
                     child: Padding(
                         padding: EdgeInsets.all(10),
-                        child:Image.asset('assets/png/smallicon.png',
-                    fit: BoxFit.contain,)))
+                        child: Image.asset(
+                          'assets/png/smallicon.png',
+                          fit: BoxFit.contain,
+                        )))
               ],
             ),
           )),

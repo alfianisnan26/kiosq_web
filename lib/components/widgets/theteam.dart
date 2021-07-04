@@ -26,8 +26,8 @@ class _TheTeam extends State<TheTeam> {
     'Alfian Badrul Isnan': ['alfian.jpg', 'alf.ian_'],
     'Fadly Ahmad Firdausy': ['fadly.jpg', 'freaquill'],
     'Muhammad Saddam': ['saddam.jpg', 'saddamsungkar'],
-    'Ricky Kusnadi': ['ricky.jpg', 'rc_kusnadi'],
-    'Zidan Arsyad': ['', 'zidan.arsyad'],
+    'Muhammad Zidan Arsyad': ['zidan.jpg', 'zidan.arsyad'],
+    'Ricky Kusnadi': ['ricky.jpg', 'rc_kusnadi']
   };
 
   CarouselController buttonCarouselController = CarouselController();
