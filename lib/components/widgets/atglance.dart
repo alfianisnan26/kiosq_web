@@ -5,7 +5,7 @@ import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 import '../../menus.dart';
 
 class AtGlance extends StatefulWidget {
-  final String name = 'At Glance';
+  final String name = ' Proposal Video ';
   Key get key => Menus.keys[name];
   @override
   State<StatefulWidget> createState() {
@@ -14,15 +14,11 @@ class AtGlance extends StatefulWidget {
 }
 
 class _AtGlance extends State<AtGlance> {
-
   // ignore: close_sinks
   YoutubePlayerController _controller = YoutubePlayerController(
     initialVideoId: 'K18cpp_-gP8',
     params: YoutubePlayerParams(
-      showControls: true,
-      showFullscreenButton: true,
-      autoPlay: false
-    ),
+        showControls: true, showFullscreenButton: true, autoPlay: false),
   );
 
   @override
@@ -31,26 +27,26 @@ class _AtGlance extends State<AtGlance> {
         color: Colors.red,
         child: Container(
           alignment: Alignment.bottomCenter,
-      padding: EdgeInsets.all(50),
-      child: Column(
-        children: [
-          Container(
-            padding: EdgeInsets.only(bottom: 50),
-            height: 500,
-        child:YoutubePlayerIFrame(
-            controller: _controller,
-            aspectRatio: 16 / 9,
-          )),
-          Text(widget.name,
-              style: TextStyle(
-                fontSize: 30,
-              )),
-          SizedBox(height: 20,),
-          Text(
-            Strings.samples
+          padding: EdgeInsets.all(50),
+          child: Column(
+            children: [
+              Container(
+                  padding: EdgeInsets.only(bottom: 50),
+                  height: 500,
+                  child: YoutubePlayerIFrame(
+                    controller: _controller,
+                    aspectRatio: 16 / 9,
+                  )),
+              Text(widget.name,
+                  style: TextStyle(
+                    fontSize: 30,
+                  )),
+              SizedBox(
+                height: 20,
+              ),
+              Text(Strings.videoDescription),
+            ],
           ),
-        ],
-      ),
-    ));
+        ));
   }
 }

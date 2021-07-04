@@ -6,7 +6,7 @@ import 'package:kiosq_web/components/strings.dart';
 import '../../menus.dart';
 
 class Showcase extends StatefulWidget {
-  final String name = 'Showcase';
+  final String name = 'Application Design';
   Key get key => Menus.keys[name];
   @override
   State<StatefulWidget> createState() {
@@ -15,7 +15,6 @@ class Showcase extends StatefulWidget {
 }
 
 class _Showcase extends State<Showcase> {
-
   CarouselController buttonCarouselController = CarouselController();
 
   @override
@@ -25,43 +24,46 @@ class _Showcase extends State<Showcase> {
         color: Colors.yellow,
         child: Container(
           alignment: Alignment.bottomCenter,
-      padding: EdgeInsets.symmetric(vertical: 50),
-      child: Column(
-        children: [
-          CarouselSlider(
-            items: List.generate(8, (index) {
-              return Builder(
-                builder: (BuildContext context) {
-                  return Container(
-                      padding: EdgeInsets.symmetric(horizontal: 5.0),
-                      child: Image.asset('assets/png/showcase/sc_${index + 1}.png')
+          padding: EdgeInsets.symmetric(vertical: 50),
+          child: Column(
+            children: [
+              CarouselSlider(
+                items: List.generate(8, (index) {
+                  return Builder(
+                    builder: (BuildContext context) {
+                      return Container(
+                          padding: EdgeInsets.symmetric(horizontal: 5.0),
+                          child: Image.asset(
+                              'assets/png/showcase/sc_${index + 1}.png'));
+                    },
                   );
-                },
-              );
-            }).toList(),
-            carouselController: buttonCarouselController,
-            options: CarouselOptions(
-              height: 400,
-              autoPlay: true,
-              enlargeCenterPage: true,
-              viewportFraction: 250/size,
-              initialPage: 0,
-              aspectRatio: 9/16
-            ),
+                }).toList(),
+                carouselController: buttonCarouselController,
+                options: CarouselOptions(
+                    height: 400,
+                    autoPlay: true,
+                    enlargeCenterPage: true,
+                    viewportFraction: 250 / size,
+                    initialPage: 0,
+                    aspectRatio: 9 / 16),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 50),
+                  child: Text(widget.name,
+                      style: TextStyle(
+                        fontSize: 30,
+                      ))),
+              SizedBox(
+                height: 20,
+              ),
+              Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 50),
+                  child: Text(Strings.showcaseDescription)),
+            ],
           ),
-          SizedBox(height: 20,),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 50),
-            child:Text(widget.name,
-              style: TextStyle(
-                fontSize: 30,
-              ))),
-          SizedBox(height: 20,),
-          Padding(
-              padding: EdgeInsets.symmetric(horizontal: 50),
-              child:Text(Strings.samples)),
-        ],
-      ),
-    ));
+        ));
   }
 }

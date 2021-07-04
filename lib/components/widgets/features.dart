@@ -65,7 +65,7 @@ class _Features extends State<Features> {
                             padding: EdgeInsets.all(12),
                             child: GestureDetector(
                               onTap: () {
-                                if(t!=null && t.isActive) t.cancel();
+                                if (t != null && t.isActive) t.cancel();
                                 t = Timer(const Duration(seconds: 4), () {
                                   setState(() {
                                     desc = defaultDesc;
@@ -100,6 +100,7 @@ class _Features extends State<Features> {
                 }).toList(),
                 carouselController: buttonCarouselController,
                 options: CarouselOptions(
+                    enableInfiniteScroll: false,
                     height: 200,
                     autoPlay: true,
                     enlargeCenterPage: false,

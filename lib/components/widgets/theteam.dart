@@ -24,7 +24,10 @@ class TheTeam extends StatefulWidget {
 class _TheTeam extends State<TheTeam> {
   Map<String, List<String>> features = {
     'Alfian Badrul Isnan': ['alfian.jpg', 'alf.ian_'],
-    'Nama 2': ['alfian.jpg', 'instagram'],
+    'Fadly Ahmad Firdausy': ['fadly.jpg', 'freaquill'],
+    'Muhammad Saddam': ['saddam.jpg', 'saddamsungkar'],
+    'Ricky Kusnadi': ['ricky.jpg', 'rc_kusnadi'],
+    'Zidan Arsyad': ['', 'zidan.arsyad'],
   };
 
   CarouselController buttonCarouselController = CarouselController();
@@ -57,7 +60,9 @@ class _TheTeam extends State<TheTeam> {
                           child: GestureDetector(
                               onTap: () {
                                 _visiblity[index] = true;
-                                if(_timerShow[index] != null && _timerShow[index].isActive) _timerShow[index].cancel();
+                                if (_timerShow[index] != null &&
+                                    _timerShow[index].isActive)
+                                  _timerShow[index].cancel();
                                 _timerShow[index] =
                                     Timer(const Duration(seconds: 4), () {
                                   setState(() {
@@ -73,8 +78,10 @@ class _TheTeam extends State<TheTeam> {
                                 },
                                 onExit: (p) {
                                   setState(() {
-                                      _visiblity[index] = false;
-                                      if(_timerShow[index] != null && _timerShow[index].isActive) _timerShow[index].cancel();
+                                    _visiblity[index] = false;
+                                    if (_timerShow[index] != null &&
+                                        _timerShow[index].isActive)
+                                      _timerShow[index].cancel();
                                   });
                                 },
                                 child: Material(
@@ -157,7 +164,7 @@ class _TheTeam extends State<TheTeam> {
               ),
               Padding(
                   padding: EdgeInsets.symmetric(horizontal: 50),
-                  child: Text(Strings.samples)),
+                  child: Text(Strings.teamDescription)),
             ],
           ),
         ));
