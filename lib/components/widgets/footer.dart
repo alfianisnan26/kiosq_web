@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../menus.dart';
-import '../../static.dart';
 
 class Footer extends StatefulWidget{
-  final String name = 'Footer';
-  Key get key => Menus.keys[name];
+  Key get key => Menus.keys['Footer'];
   @override
   State<StatefulWidget> createState() {
     return _Footer();
@@ -20,16 +18,7 @@ class _Footer extends State<Footer>{
         child:Container(
           padding: EdgeInsets.all(50),
           alignment: Alignment.bottomLeft,
-          height: 500,
-
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Text(widget.name, style: TextStyle(
-                fontSize: 30,
-              ))
-            ],
-          ),
+          height: 125
         ));
   }
 }

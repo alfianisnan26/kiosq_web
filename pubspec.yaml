@@ -30,6 +30,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   youtube_player_iframe: ^2.1.0
   carousel_slider: ^4.0.0
+  flutter_svg: ^0.22.0
 
 dev_dependencies:
   flutter_test:
@@ -48,6 +49,8 @@ flutter:
   assets:
     - assets/png/
     - assets/png/showcase/
+    - assets/svg/
+    - assets/profiles/
   fonts:
     - family: ProductSans
       fonts:

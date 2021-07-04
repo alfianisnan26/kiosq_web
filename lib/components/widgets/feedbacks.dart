@@ -3,50 +3,47 @@ import 'dart:async';
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../menus.dart';
-import '../../static.dart';
 import '../strings.dart';
 
-class Features extends StatefulWidget {
-  final String name = 'Features';
+class Feedbacks extends StatefulWidget {
+  final String name = 'Feedbacks';
   Key get key => Menus.keys[name];
   @override
   State<StatefulWidget> createState() {
-    return _Features();
+    return _Feedbacks();
   }
 }
 
-class _Features extends State<Features> {
+class _Feedbacks extends State<Feedbacks> {
   Map<String, List<String>> features = {
     'Smart Search': ['search.svg', 'The Search Engine is Great'],
     'Smart Map': ['map.svg', 'The Map is Great']
   };
 
-  List<String> defaultDesc = ['Features', Strings.samples];
+  List<String> defaultDesc = ['Feedbacks', Strings.samples];
 
-  List<String> desc;
   CarouselController buttonCarouselController = CarouselController();
 
   Timer t;
 
   void initState() {
     super.initState();
-    desc = defaultDesc;
   }
 
   @override
   Widget build(BuildContext context) {
     double size = MediaQuery.of(context).size.width;
     return Material(
-        color: Colors.lime,
+        color: Colors.blue,
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 50),
           alignment: Alignment.bottomLeft,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               CarouselSlider(
                 items: List.generate(features.length, (index) {
@@ -63,26 +60,9 @@ class _Features extends State<Features> {
                           child: Container(
                             width: 200,
                             padding: EdgeInsets.all(12),
-                            child: GestureDetector(
-                              onTap: () {
-                                if(t!=null && t.isActive) t.cancel();
-                                t = Timer(const Duration(seconds: 4), () {
-                                  setState(() {
-                                    desc = defaultDesc;
-                                  });
-                                });
-                                buttonCarouselController.animateToPage(index,
-                                    curve: Curves.easeInOut);
-                                setState(() {
-                                  desc = [
-                                    features.keys.toList()[index],
-                                    features[features.keys.toList()[index]][1]
-                                  ];
-                                });
-                              },
-                              child: Column(
+                            child: Column(
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                MainAxisAlignment.spaceBetween,
                                 children: [
                                   SvgPicture.asset(
                                     'assets/svg/${(features[features.keys.toList()[index]])[0]}',
@@ -92,7 +72,6 @@ class _Features extends State<Features> {
                                 ],
                               ),
                             ),
-                          ),
                         ),
                       );
                     },
@@ -112,7 +91,7 @@ class _Features extends State<Features> {
               ),
               Padding(
                   padding: EdgeInsets.symmetric(horizontal: 50),
-                  child: Text(desc[0],
+                  child: Text(widget.name,
                       style: TextStyle(
                         fontSize: 30,
                       ))),
@@ -121,9 +100,29 @@ class _Features extends State<Features> {
               ),
               Padding(
                   padding: EdgeInsets.symmetric(horizontal: 50),
-                  child: Text(desc[1])),
+                  child: Text(Strings.samples)),
+              Padding(
+                padding: EdgeInsets.only(left: 50, right: 50, top: 25),
+                child:Material(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                elevation: 5,
+                child:Container(
+                  padding: EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(25),
+                  color: Colors.white
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children:[
+                    Text('Give your feedback and opinion here!', style: TextStyle(fontWeight: FontWeight.bold),),
+                    Text('Give us rating!', style: TextStyle(fontWeight: FontWeight.bold),),
+                  ]
+                ))))
             ],
-          ),
-        ));
+          )),
+        );
   }
 }

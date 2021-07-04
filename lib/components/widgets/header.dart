@@ -1,8 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kiosq_web/static.dart';
 
 import '../../menus.dart';
+import '../strings.dart';
 
 class Header extends StatefulWidget {
   final String name = 'Main';
@@ -18,20 +18,26 @@ class _Header extends State<Header> {
   Widget build(BuildContext context) {
     return Material(
         color: Colors.white,
-        child: Container(
+        child: Padding(
+          padding: EdgeInsets.only(top: 50),
+        child:Container(
           padding: EdgeInsets.all(50),
           alignment: Alignment.bottomLeft,
           height: 500,
+          decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/png/header.png'), fit: BoxFit.fitHeight)),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(widget.name,
+              Text('Meet the KiosQ app',
                   style: TextStyle(
                     fontSize: 30,
-                  ))
+                  )),
+              SizedBox(height: 20,),
+              Text(Strings.samples)
             ],
           ),
-        ));
+        )));
   }
 }
 
