@@ -16,10 +16,7 @@ class WebApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'KiosQ App Showcase',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        fontFamily: 'ProductSans'
-      ),
+      theme: ThemeData(primarySwatch: Colors.blue, fontFamily: 'ProductSans'),
       home: MainPage(),
     );
   }
@@ -33,17 +30,15 @@ class MainPage extends StatefulWidget {
 class _MainPage extends State<MainPage> {
   double lastScroll = 0;
   _scrollListener() {
-
     setState(() {
-      if(Static.scrollController.offset > lastScroll)
+      if (Static.scrollController.offset > lastScroll)
         Static.headerEnd = -1;
       else
         Static.headerEnd = 0;
       lastScroll = Static.scrollController.offset;
       if (Static.scrollController.offset > 0)
         Static.headerState = true;
-      else if(!Static.sidebarState)
-          Static.headerState = false;
+      else if (!Static.sidebarState) Static.headerState = false;
     });
   }
 
@@ -61,36 +56,37 @@ class _MainPage extends State<MainPage> {
     super.dispose();
   }
 
-  void toggleSidebar(){
+  void toggleSidebar() {
     setState(() {
       Static.sidebarState = !Static.sidebarState;
-      if(Static.sidebarState){
+      if (Static.sidebarState) {
         Static.sidebarEnd = 0;
         Static.headerState = true;
       } else {
         Static.sidebarEnd = 1;
-        if (Static.scrollController.offset == 0)
-          Static.headerState = false;
+        if (Static.scrollController.offset == 0) Static.headerState = false;
       }
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Stack(children: [
-      SingleChildScrollView(
-        controller: Static.scrollController,
-        child: Column(
-          children: [
-            Column(
-              children: Menus.widgets
+    return GestureDetector(
+        onTap: () => FocusScope.of(context).requestFocus(new FocusNode()),
+        child: Stack(children: [
+          SingleChildScrollView(
+            controller: Static.scrollController,
+            child: Column(
+              children: [
+                Column(children: Menus.widgets),
+                Footer(),
+              ],
             ),
-            Footer(),
-          ],
-        ),
-      ),
-      SideBar(callback: toggleSidebar),
-      DynamicHeader(callback: toggleSidebar,),
-    ]);
+          ),
+          SideBar(callback: toggleSidebar),
+          DynamicHeader(
+            callback: toggleSidebar,
+          ),
+        ]));
   }
 }

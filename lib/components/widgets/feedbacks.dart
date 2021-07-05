@@ -44,6 +44,58 @@ class _Feedbacks extends State<Feedbacks> {
 
   List<Widget> feedbackList = [];
 
+  void getFeedback(double size) {
+    FeedbackController.get().then((value) => setState(() {
+          feedbackList = List.generate(value.length, (index) {
+            return Builder(
+              builder: (BuildContext context) {
+                return Padding(
+                    padding: EdgeInsets.all(25),
+                    child: GestureDetector(
+                      onTap: () => listGenerator(size),
+                      child: Card(
+                        elevation: 20,
+                        color: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        child: Container(
+                          width: size - 50,
+                          padding: EdgeInsets.all(25),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                dateFormatter(value[index].date),
+                                style: TextStyle(color: Colors.grey),
+                              ),
+                              Text(
+                                value[index].msg,
+                                maxLines: 5,
+                                textAlign: TextAlign.center,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                              RatingBarIndicator(
+                                rating: value[index].rating,
+                                itemBuilder: (context, index) => Icon(
+                                  Icons.star,
+                                  color: Colors.amber,
+                                ),
+                                itemCount: 5,
+                                itemSize: 20.0,
+                                direction: Axis.horizontal,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ));
+              },
+            );
+          }).toList();
+        }));
+  }
+
   void listGenerator(double size) {
     setState(() {
       feedbackList = [
@@ -51,73 +103,30 @@ class _Feedbacks extends State<Feedbacks> {
           builder: (BuildContext context) {
             return Padding(
               padding: EdgeInsets.all(25),
-              child: Card(
-                elevation: 20,
-                color: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25),
-                ),
-                child: Container(
-                    width: size - 50,
-                    padding: EdgeInsets.all(25),
-                    child: Center(
-                      child: SizedBox(
-                          height: 20,
-                          width: 20,
-                          child: CircularProgressIndicator()),
-                    )),
+              child: GestureDetector(
+                onTap: () => getFeedback(size),
+                child: Card(
+                    elevation: 20,
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                    child: Container(
+                        width: size - 50,
+                        padding: EdgeInsets.all(25),
+                        child: Center(
+                          child: SizedBox(
+                              height: 20,
+                              width: 20,
+                              child: CircularProgressIndicator()),
+                        ))),
               ),
             );
           },
         )
       ];
     });
-    FeedbackController.get()
-        .then((value) => feedbackList = List.generate(value.length, (index) {
-              return Builder(
-                builder: (BuildContext context) {
-                  return Padding(
-                    padding: EdgeInsets.all(25),
-                    child: Card(
-                      elevation: 20,
-                      color: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                      child: Container(
-                        width: size - 50,
-                        padding: EdgeInsets.all(25),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              dateFormatter(value[index].date),
-                              style: TextStyle(color: Colors.grey),
-                            ),
-                            Text(
-                              value[index].msg,
-                              maxLines: 5,
-                              textAlign: TextAlign.center,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            RatingBarIndicator(
-                              rating: value[index].rating,
-                              itemBuilder: (context, index) => Icon(
-                                Icons.star,
-                                color: Colors.amber,
-                              ),
-                              itemCount: 5,
-                              itemSize: 20.0,
-                              direction: Axis.horizontal,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  );
-                },
-              );
-            }).toList());
+    getFeedback(size);
   }
 
   @override
@@ -149,7 +158,8 @@ class _Feedbacks extends State<Feedbacks> {
                   child: Text(
                     Strings.feedback,
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 20),
+                    style: TextStyle(
+                        color: Colors.white.withOpacity(0.8), fontSize: 20),
                   )),
               Padding(
                   padding: EdgeInsets.only(left: 50, right: 50, top: 25),
@@ -188,7 +198,8 @@ class _Feedbacks extends State<Feedbacks> {
                                               const Radius.circular(25),
                                             ),
                                           ),
-                                          hintText: "Type your inputs and suggestions here",
+                                          hintText:
+                                              "Type your inputs and suggestions here",
                                           hintStyle:
                                               TextStyle(color: Colors.grey)),
                                     )),
@@ -346,6 +357,6 @@ class _Feedbacks extends State<Feedbacks> {
         break;
     }
 
-    return '$day, ${date.day} $month ${date.year}. at ${(date.hour%12 < 10)?'0':''}${date.hour%12}:${date.minute} ${(date.hour/12 < 1)?'AM':'PM'}';
+    return '$day, ${date.day} $month ${date.year}. at ${(date.hour % 12 < 10) ? '0' : ''}${date.hour % 12}:${date.minute} ${(date.hour / 12 < 1) ? 'AM' : 'PM'}';
   }
 }

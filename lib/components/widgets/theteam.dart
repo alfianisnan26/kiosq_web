@@ -63,7 +63,9 @@ class _TheTeam extends State<TheTeam> {
                     builder: (BuildContext context) {
                       return GestureDetector(
                               onTap: () {
-                                _visiblity[index] = true;
+                                setState(() {
+                                  _visiblity[index] = true;
+                                });
                                 if (_timerShow[index] != null &&
                                     _timerShow[index].isActive)
                                   _timerShow[index].cancel();

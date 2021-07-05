@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/rendering.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../menus.dart';
@@ -31,12 +31,14 @@ class _Footer extends State<Footer> {
                         SizedBox(
                           height: 20,
                             width: 20,
-                            child: GestureDetector(
+                            child: MouseRegion(
+                              cursor: SystemMouseCursors.click,
+                                child:GestureDetector(
                               onTap: () async {
                                 String _url = 'https://github.com/alfianisnan26/kiosq_web';
                                 await canLaunch(_url) ? await launch(_url) : throw 'Could not launch $_url';
                               },
-                                child:SvgPicture.asset('assets/svg/github.svg', color: Colors.white.withOpacity(0.8),))),
+                                child:Image.asset('assets/svg/github.png', color: Colors.white.withOpacity(0.8),)))),
                         Visibility(
                       visible: (MediaQuery.of(context).size.width < 650)
                           ? false
