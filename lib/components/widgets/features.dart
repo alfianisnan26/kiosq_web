@@ -21,12 +21,17 @@ class Features extends StatefulWidget {
 
 class _Features extends State<Features> {
   Map<String, List<String>> features = {
-    'Smart Search': ['search.svg', 'Mencari barang dan toko yang menyediakan barang tersebut'],
-    'Smart Map': ['map.svg', 'Mencari lokasi toko terdekat'],
-    'Smart Cashier':['cashier.svg', 'Menghitung transaksi dengan tepat'],
-    'Smart Counting':['maths.svg','Melakukan pembukuan otomatis untuk penjual'],
-    'Smart Delivery':['delivery-truck.svg','Dapat dilakukan pengiriman oleh pihak toko'],
-    'Smart Payment':['debit-card.svg','Dapat melakukan pembayaran melalui e-wallet/e-payment']
+    'Smart Search': ['search.svg', 'Dapat menghubungkan penjual dan pembeli terutama dalam lokasi radius yang dekat dan mudah diakses secara langsung'],
+    'Smart Map': ['map.svg', 'Lokasi pedagang ditentukan dengan posisi terdekat dengan pembeli. Fitur ini akan menggunakan maps, dapat digunakan saat mencari katalog barang dan juga saat pembelian barang. Selain itu lokasi pedagang untuk pedagang keliling akan terus di update sehingga pergerakannya dapat diketahui oleh pengguna. Fitur lokasi juga dapat diimplementasikan kepada pedagang untuk mengetahui posisi pembeli, dalam kasus ini untuk mengamankan privasi pembeli, posisi pembeli akan dikelompokkan kedalam radius terbaik lokasi penjualan pedagang sehingga lokasi pembeli tidak ditampilkan secara spesifik.'],
+    'Smart Cashier':['cashier.svg', 'Fitur ini memungkinkan kalkulasi pembelian barang dapat digunakan dengan melakukan scanning barcode sehingga perhitungan barang dapat lebih cepat dan menurunkan kemungkinan kesalahan perhitungan manual. Karena kemungkinan barang yang tidak memiliki barcode, identifikasi juga dapat dilakukan dengan klasifikasi barang manual atau menggunakan image recognition (jika penjual juga lupa barang tersebut).'],
+    'Smart Counting':['maths.svg','Fitur analisis data ini dapat diintegrasikan untuk memberikan insight terhadap statistik penjualan. Data ini dapat meliputi barang terjual, barang yang perlu di restock, dan data keuangan.'],
+    'Delivery':['delivery-truck.svg','Fitur ini dapat diaplikasikan jika pedang di tempat memiliki kurir untuk pengiriman barang. Kurir juga dapat menentukan seberapa jauh (maksimal) penggunaan fitur pengiriman barang ataupun mengaplikasikan tarif untuk pengiriman barang.'],
+    'Smart Payment':['debit-card.svg','Dapat melakukan pembayaran melalui e-wallet/e-payment'],
+    'Price Catalog':['price-tag.svg','Fitur ini akan menampilkan katalog produk, stok dan harga dari produk yang dijual oleh pedagang. Jika memungkinkan. Katalog juga dapat dicari secara global (dari beberapa toko) yang disusun dari lokasi terdekat, atau pengguna juga dapat melihat barang dari toko tertentu.'],
+    'Notification':['notification.svg','Fitur notifikasi ini dapat digunakan oleh pembeli untuk mendapatkan informasi dari pedagang keliling yang posisinya sedang dekat dengan pembeli. Pembeli dapat memberikan filter tertentu terhadap kategori apa yang diinginkan pembeli, atau memilih mendapatkan notifikasi untuk pedangang tertentu.'],
+    'Image Recognition' :['image.svg','Pedagang warung yang lupa harganya dapat menggunakan fitur ini untuk mengenali barang tersebut atau mendapatkan informasi barang saat melakukan entri data untuk mendapatkan nama barang yang umum, harga barang rekomendasi, dan info lainnya. Informasi barang dari image recognition ini didapat jika database server dari aplikasi telah memiliki data yang cukup banyak sehingga Learning AI yang digunakan semakin akurat. Untuk barang yang memiliki barcode, diutamakan menggunakan barcode terlebih dahulu untuk melakukan identifikasi. Fitur ini juga dapat digunakan oleh pembeli untuk mengetahui barang tersebut dan untuk mengetahui dimana tempat terdekat untuk membelinya.'],
+    'Ads':['ads.svg','Fitur ini akan menjadi media pengembang untuk mendapatkan pendapatan. Periklanan dapat disewakan kepada penjual dari aplikasi ini ataupun menampilkan iklan dari luar.'],
+    'Instant Message':['chat.svg','Perpesanan instan dapat digunakan untuk media komunikasi antara penjual dan pembeli.']
   };
 
   List<String> defaultDesc = ['Features', Strings.fitur];
