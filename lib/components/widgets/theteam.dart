@@ -1,12 +1,12 @@
 import 'dart:async';
 import 'dart:ui';
+import 'dart:math';
 
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../menus.dart';
 import '../../static.dart';
@@ -24,13 +24,22 @@ class TheTeam extends StatefulWidget {
 class _TheTeam extends State<TheTeam> {
   Map<String, List<String>> features = {
     'Alfian Badrul Isnan': ['alfian.jpg', 'alf.ian_'],
-    'Nama 2': ['alfian.jpg', 'instagram'],
+    'Fadly Ahmad Firdausy': ['fadly.jpg', 'freaquill'],
+    'Muhammad Saddam': ['saddam.jpg', 'saddamsungkar'],
+    'Muhammad Zidan Arsyad': ['zidan.jpg', 'zidan.arsyad'],
+    'Ricky Kusnadi': ['ricky.jpg', 'rc_kusnadi']
   };
-
   CarouselController buttonCarouselController = CarouselController();
 
   List<bool> _visiblity;
   List<Timer> _timerShow;
+  List<Widget> qWidget = List.generate(
+      Strings.quotes.length,
+      (index) => Text(
+            Strings.quotes[index],
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.black.withOpacity(0.8), fontSize: 20),
+          ));
 
   void initState() {
     super.initState();
@@ -42,7 +51,7 @@ class _TheTeam extends State<TheTeam> {
   Widget build(BuildContext context) {
     double size = MediaQuery.of(context).size.width;
     return Material(
-        color: Colors.green,
+        color: Colors.white,
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 50),
           alignment: Alignment.bottomLeft,
@@ -52,12 +61,14 @@ class _TheTeam extends State<TheTeam> {
                 items: List.generate(features.length, (index) {
                   return Builder(
                     builder: (BuildContext context) {
-                      return Padding(
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          child: GestureDetector(
+                      return GestureDetector(
                               onTap: () {
-                                _visiblity[index] = true;
-                                if(_timerShow[index] != null && _timerShow[index].isActive) _timerShow[index].cancel();
+                                setState(() {
+                                  _visiblity[index] = true;
+                                });
+                                if (_timerShow[index] != null &&
+                                    _timerShow[index].isActive)
+                                  _timerShow[index].cancel();
                                 _timerShow[index] =
                                     Timer(const Duration(seconds: 4), () {
                                   setState(() {
@@ -73,12 +84,14 @@ class _TheTeam extends State<TheTeam> {
                                 },
                                 onExit: (p) {
                                   setState(() {
-                                      _visiblity[index] = false;
-                                      if(_timerShow[index] != null && _timerShow[index].isActive) _timerShow[index].cancel();
+                                    _visiblity[index] = false;
+                                    if (_timerShow[index] != null &&
+                                        _timerShow[index].isActive)
+                                      _timerShow[index].cancel();
                                   });
                                 },
                                 child: Material(
-                                  elevation: 10,
+                                  elevation: 5,
                                   color: Colors.transparent,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(200),
@@ -100,15 +113,12 @@ class _TheTeam extends State<TheTeam> {
                                               decoration: BoxDecoration(
                                                   shape: BoxShape.circle,
                                                   color: Colors.white
-                                                      .withOpacity(0.5)),
+                                                      .withOpacity(0.8)),
                                               child: ClipRRect(
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           200),
-                                                  child: BackdropFilter(
-                                                      filter: ImageFilter.blur(
-                                                          sigmaX: 3, sigmaY: 3),
-                                                      child: Column(
+                                                  child: Column(
                                                           mainAxisAlignment:
                                                               MainAxisAlignment
                                                                   .center,
@@ -122,13 +132,20 @@ class _TheTeam extends State<TheTeam> {
                                                                       FontWeight
                                                                           .bold),
                                                             ),
-                                                            Text(features[features
-                                                                    .keys
-                                                                    .toList()[
-                                                                index]][1]),
-                                                          ])))))),
+                                                            Text(
+                                                              features[features
+                                                                      .keys
+                                                                      .toList()[
+                                                                  index]][1],
+                                                              style: TextStyle(
+                                                                  color: Colors
+                                                                      .black
+                                                                      .withOpacity(
+                                                                          0.5)),
+                                                            ),
+                                                          ]))))),
                                 ),
-                              )));
+                              ));
                     },
                   );
                 }).toList(),
@@ -137,10 +154,10 @@ class _TheTeam extends State<TheTeam> {
                     height: 200,
                     reverse: true,
                     enableInfiniteScroll: false,
-                    autoPlay: true,
+                    autoPlay: false,
                     enlargeCenterPage: false,
                     viewportFraction: 250 / size,
-                    initialPage: 0,
+                    initialPage: 2,
                     aspectRatio: 9 / 16),
               ),
               SizedBox(
@@ -150,14 +167,40 @@ class _TheTeam extends State<TheTeam> {
                   padding: EdgeInsets.symmetric(horizontal: 50),
                   child: Text('Meet Our Team',
                       style: TextStyle(
-                        fontSize: 30,
-                      ))),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30,
+                          color: Colors.black))),
               SizedBox(
                 height: 20,
               ),
               Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 50),
-                  child: Text(Strings.samples)),
+                padding: EdgeInsets.symmetric(horizontal: 50),
+                child: AnimatedSwitcher(
+                    duration: const Duration(seconds: 3),
+                    child: CarouselSlider(
+                      items: List.generate(features.length, (index) {
+                        return Builder(
+                          builder: (BuildContext context) {
+                            return Container(
+                                width: size - 50,
+                                child:Text(
+                                Strings.quotes[index], textAlign: TextAlign.center,
+                                style: TextStyle(color: Colors.black.withOpacity(0.8), fontSize: 20),
+                              )
+                            );
+                          },
+                        );
+                      }).toList(),
+                      carouselController: buttonCarouselController,
+                      options: CarouselOptions(
+                          height: 75,
+                          autoPlay: true,
+                          enlargeCenterPage: false,
+                          autoPlayCurve: Curves.easeInOut,
+                          autoPlayInterval: Duration(minutes: 1),
+                          viewportFraction: 1,),
+                    ),),
+              ),
             ],
           ),
         ));

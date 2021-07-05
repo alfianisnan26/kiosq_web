@@ -15,7 +15,7 @@ class Menus {
     'Showcase': Showcase(),
     'Features': Features(),
     'The Team': TheTeam(),
-    'Feedbacks': Feedbacks(),
+    'Feedback': Feedbacks(),
   };
   static final Map<String, GlobalKey> keys = Map.fromIterables(
       _widgets.keys, Iterable.generate(_widgets.length, (i) => GlobalKey()));
